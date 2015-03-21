@@ -16,10 +16,6 @@
   <body>
     <div id="chat_div"></div>
 
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
 <link rel="stylesheet" href="./jquery.ui.chatbox.css" />
 <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
@@ -45,14 +41,8 @@
     }
     
     var socket = io();
-    $('form').submit(function(){
-      socket.emit('chat message', $('#m').val());
-      $('#m').val('');
-      return false;
-    });
     socket.on('chat message', function(msg){
-      $('#messages').append($('<li>').text(msg));
-      $("#chat_div").chatbox("option", "boxManager").addMsg('#chat_div', msg);
+      $("#chat_div").chatbox("option", "boxManager").addMsg('#Demo', msg);
     });    
   });
 </script>
